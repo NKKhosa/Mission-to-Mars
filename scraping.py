@@ -62,7 +62,7 @@ def mars_news(browser):
 
 def featured_image(browser):
     # visit url
-    url = 'https://spaceimages-mars.com'
+    url = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/index.html'
     browser.visit(url)
 
     # find and click the full image button
@@ -81,7 +81,7 @@ def featured_image(browser):
         return None
 
     # use the base url to create an absolute url
-    img_url = f'https://spaceimages-mars.com/{img_url_rel}'
+    img_url = f'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/{img_url_rel}'
 
     return  img_url
 
@@ -98,7 +98,7 @@ def mars_facts():
     df.set_index('Description', inplace=True)
     
     # convert df back to html, add bootstrap
-    return df.to_html()
+    return df.to_html(classes="table table=striped")
 
 if __name__ == "__main__":
     # if running as script, print scraped data
